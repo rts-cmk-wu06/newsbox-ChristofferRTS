@@ -3,7 +3,7 @@ const sass = require('gulp-sass')(require('sass'))
 
 function buildStyles() {
   return src('sass/index.scss')
-    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(sass({ outputStyle: 'compact' }))
     .pipe(dest('css'))
 }
 
