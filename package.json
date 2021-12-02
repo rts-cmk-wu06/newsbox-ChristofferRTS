@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/rts-cmk-wu06/newsbox-ChristofferRTS#readme",
   "dependencies": {
+    "axios": "^0.24.0"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

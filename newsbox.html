@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="fa/all.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Newsbox</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/index.js"></script>
+        <link rel="stylesheet" href="fa/all.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Newsbox</title>
 </head>
 <body class="lightTheme">
     <div class="wrapper backgroundColor">
@@ -18,7 +20,7 @@
             </div>
             <div class=" nav__container nav-container__title interactionIcon-h">Newsbox</div>
             <div class="nav__container ">
-                <a href="settings.html">
+                <a href="settings_page.html">
                     <i class="fas fa-cog interactionIcon-h"></i>
                 </a>
             </div>
@@ -30,25 +32,10 @@
                     <i class="fas fa-search"></i>
                 </div>
             </div>
-            <details>
-                <summary class="news__option borderColor">
-                    <div class="icon-category">
-                        <div class="news-icon__circle">
-                            <i class="far fa-clone"></i>
-                        </div>
-                        <h3 class="interactionIcon-h">SPORT</h3>
-                    </div>
-                    <i class="fas fa-chevron-down interactionIcon-h"></i>
-                </summary>
-                <div class="news-content borderColor">
-                    <div class="news-content__img"></div>
-                    <div class="news-content__text interactionIcon-h">
-                        <h5>Headline</h5>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, mollitia cumque quis repudiandae reiciendis possimus voluptatem ullam! </p>
-                    </div>
-                </div>
-            </details>
+            <div id="details__container">
+            </div>
         </main>
     </div>
 </body>
+<!-- <script src="js/test.js"></script> -->
 </html> 
