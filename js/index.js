@@ -1,10 +1,17 @@
 console.log('* ---index.js virker--- *');
 
+
+
+
+
+
+
+
 axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCTl7BKyOeMUCBRfkD5oy")
 .then(arr => {
     
     let data = arr.data.response.docs.splice(0,100);
-
+    
     
     for (var i = 0; i < data.length-data.length+12; i++){
         
@@ -50,19 +57,32 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
             
             var newsSection = document.getElementById(data[i].section_name);
             
+            newsSection.appendChild(document.createElement('div')).setAttribute('id','article__wrapper'+i)
 
+            var article__wrapper = document.getElementById('article__wrapper'+i)
 
-            newsSection.appendChild(document.createElement('a')).setAttribute('id','sport'+i);
+            article__wrapper.setAttribute('class','borderColor article__wrapper')
+
+            article__wrapper.appendChild(document.createElement('div')).setAttribute('id',data[i].section_name+i);
             
-            var article = document.getElementById('sport'+i);
+            var article = document.getElementById(data[i].section_name+i);
             
-            article.setAttribute('href',data[i].web_url)
-            article.setAttribute('class','news-content borderColor');
-            article.appendChild(document.createElement('div')).setAttribute('id','sportImg'+i);
-            article.appendChild(document.createElement('div')).setAttribute('id','sportText'+i);
+            // article.setAttribute('href',data[i].web_url)
+            article.setAttribute('class','article borderColor');
+
+            article.appendChild(document.createElement('a')).setAttribute('id','link'+i)
+            article.appendChild(document.createElement('i')).setAttribute('id','icon'+i)
+
+            var link = document.getElementById('link'+i)
+
+            link.setAttribute('class','news-content')
+            document.getElementById('icon'+i).setAttribute('class','fas fa-inbox interactionIcon-h borderColor archiveIcon')
+
+            link.appendChild(document.createElement('div')).setAttribute('id',data[i].section_name+'Img'+i);
+            link.appendChild(document.createElement('div')).setAttribute('id',data[i].section_name+'Text'+i);
             
-            var articleText = document.getElementById('sportText'+i);
-            var articleImg = document.getElementById('sportImg'+i);
+            var articleText = document.getElementById(data[i].section_name+'Text'+i);
+            var articleImg = document.getElementById(data[i].section_name+'Img'+i);
             
             articleText.setAttribute('class', 'news-content__text interactionIcon-h')
             articleImg.setAttribute('class', 'news-content__img')
@@ -76,11 +96,11 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
             
             
             
-            articleText.appendChild(document.createElement('h5')).setAttribute('id','sportH5'+i);
-            articleText.appendChild(document.createElement('p')).setAttribute('id','sportP'+i);
+            articleText.appendChild(document.createElement('h5')).setAttribute('id',data[i].section_name+'H5'+i);
+            articleText.appendChild(document.createElement('p')).setAttribute('id',data[i].section_name+'P'+i);
             
-            var h5 = document.getElementById('sportH5'+i)
-            var p = document.getElementById('sportP'+i)
+            var h5 = document.getElementById(data[i].section_name+'H5'+i)
+            var p = document.getElementById(data[i].section_name+'P'+i)
             
             h5.innerHTML=data[i].headline.main;
             p.innerHTML=data[i].abstract;
@@ -90,5 +110,10 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
         
 
         
+        console.log(document.getElementById('body'));
         
+        document.getElementById('body').appendChild(document.createElement('script')).setAttribute('src','js/swipe.js')
     });
+
+
+
