@@ -1,11 +1,27 @@
 console.log('* ---swipe.js virker--- *');
 
-let details = document.querySelector('.details');
+var icons = document.querySelectorAll('.openIcon')
 
-    document.querySelector(".archiveIcon").addEventListener("click", (e) => {
-        const article = e.target.closest(".article");
 
-        article.classList.add('slideOpen');
+icons.forEach(el => el.addEventListener('click',e =>{
+  const article = e.target.previousElementSibling;
+  if(!article.classList.contains('slideOpen')){
+    
+      article.classList.remove('slideClose')
+      e.target.classList.remove('spinBack')
+      
 
-        console.log('message');
-      });
+      e.target.classList.add('spin');
+      article.classList.add('slideOpen');
+  
+      console.log('open');
+  }else{
+      article.classList.remove('slideOpen')
+      e.target.classList.remove('spin')
+      
+      article.classList.add('slideClose');
+      e.target.classList.add('spinBack');
+
+      console.log('close');
+  }
+}));

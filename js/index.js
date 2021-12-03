@@ -57,7 +57,14 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
             
             var newsSection = document.getElementById(data[i].section_name);
             
-            newsSection.appendChild(document.createElement('div')).setAttribute('id','article__wrapper'+i)
+            newsSection.appendChild(document.createElement('div')).setAttribute('id','forSave'+i)
+
+            var for_save = document.getElementById('forSave'+i)
+
+            for_save.classList.add('forSave')
+
+            for_save.appendChild(document.createElement('div')).setAttribute('id','article__wrapper'+i)
+            
 
             var article__wrapper = document.getElementById('article__wrapper'+i)
 
@@ -71,12 +78,15 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
             article.setAttribute('class','article borderColor');
 
             article.appendChild(document.createElement('a')).setAttribute('id','link'+i)
-            article.appendChild(document.createElement('i')).setAttribute('id','icon'+i)
+            article.appendChild(document.createElement('i')).setAttribute('id','iconSlide'+i)
+            article.appendChild(document.createElement('i')).setAttribute('id','iconArchive'+i)
 
             var link = document.getElementById('link'+i)
 
             link.setAttribute('class','news-content')
-            document.getElementById('icon'+i).setAttribute('class','fas fa-inbox interactionIcon-h borderColor archiveIcon')
+            link.setAttribute('href',data[i].web_url)
+            document.getElementById('iconSlide'+i).setAttribute('class','fas fa-chevron-left interactionIcon-h borderColor openIcon')
+            document.getElementById('iconArchive'+i).setAttribute('class','fas fa-inbox interactionIcon-h borderColor archiveIcon')
 
             link.appendChild(document.createElement('div')).setAttribute('id',data[i].section_name+'Img'+i);
             link.appendChild(document.createElement('div')).setAttribute('id',data[i].section_name+'Text'+i);
@@ -84,7 +94,7 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
             var articleText = document.getElementById(data[i].section_name+'Text'+i);
             var articleImg = document.getElementById(data[i].section_name+'Img'+i);
             
-            articleText.setAttribute('class', 'news-content__text interactionIcon-h')
+            articleText.setAttribute('class', 'news-content__text interactionIcon-h backgroundColor')
             articleImg.setAttribute('class', 'news-content__img')
             
             
@@ -110,9 +120,9 @@ axios("https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=2LltgBkOQ8xwCT
         
 
         
-        console.log(document.getElementById('body'));
         
         document.getElementById('body').appendChild(document.createElement('script')).setAttribute('src','js/swipe.js')
+        document.getElementById('body').appendChild(document.createElement('script')).setAttribute('src','js/saveArchive.js')
     });
 
 
